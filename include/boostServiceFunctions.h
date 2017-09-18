@@ -36,9 +36,6 @@ vector<string> GetColumnFromFile(const string path, const unsigned int position,
 vector<double> GetDoubleColumnFromFile(const string path, const unsigned int position, const string delimiter = "\t");
 // std::map<string,double> ReadMap(const string path, const string delimiter = "\t");
 
-/// restore dumped graph
-TGraphErrors* GetDumpedGraph(string inFileName);
-
 int parseOptionsWithBoost(po::variables_map &vm, int argc, char* argv[], po::options_description &desc);
 
 #endif

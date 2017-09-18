@@ -53,33 +53,6 @@ vector<double> GetDoubleColumnFromFile(const string path, const unsigned int pos
   return outVec;
 }
 
-TGraphErrors* GetDumpedGraph(string inFileName){
-  
-  const int nPoints = GetDoubleColumnFromFile(inFileName,0).size();
-  double* x = new double[nPoints];
-  double* xErr = new double[nPoints];
-  double* y = new double[nPoints];
-  double* yErr = new double[nPoints];
-  
-  vector<double> xVec = GetDoubleColumnFromFile(inFileName,0);
-  vector<double> xErrVec = GetDoubleColumnFromFile(inFileName,1);
-  vector<double> yVec = GetDoubleColumnFromFile(inFileName,2);
-  vector<double> yErrVec = GetDoubleColumnFromFile(inFileName,3);
-  
-  x = &xVec[0];
-  xErr = &xErrVec[0];
-  y = &yVec[0];
-  yErr = &yErrVec[0];
-  
-  TGraphErrors* outGraph = new TGraphErrors(nPoints, x, y, xErr, yErr);
-  
-  return outGraph;
-  
-}
-
-
-
-
 
 /// parse input arguments
 int parseOptionsWithBoost(po::variables_map &vm, int argc, char* argv[], po::options_description &desc){
@@ -95,7 +68,7 @@ int parseOptionsWithBoost(po::variables_map &vm, int argc, char* argv[], po::opt
        */ 
       if ( vm.count("help")  ) 
       { 
-        std::cout << "Basic Command Line Parameter App" << std::endl 
+        std::cout << "Available options:" << std::endl 
                   << desc << std::endl; 
         return HELP_CALLED; 
       } 
